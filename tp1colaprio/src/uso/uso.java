@@ -26,9 +26,7 @@ public class uso {
 		while(!cola.colaVacia());
 		
 		do {
-			int elemento = Colaaux.primero();
-			int prioridad = Colaaux.prioridad();
-			cola.acolarPrioridad(elemento, prioridad);
+			cola.acolarPrioridad(Colaaux.primero(), Colaaux.prioridad());
 			Colaaux.desacolar();
 		}
 		while(!Colaaux.colaVacia());
