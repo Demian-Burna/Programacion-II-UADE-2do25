@@ -1,6 +1,5 @@
 package uso;
 
-import interfaz.ColaTDA;
 import implementacion.Cola;
 
 public class uso{
@@ -8,6 +7,9 @@ public class uso{
 	
 	
 	public static void main(String[] arg) {
+		
+		Cola cola1 = new Cola();
+		cola1.inicializarCola();
 		
 		
 	}
