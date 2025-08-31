@@ -85,6 +85,5 @@ public class uso{
 		System.out.println("\nMostrando cola invertida\n");
 		mostrarCola(cola1);
 		
-		
 	}
 }
