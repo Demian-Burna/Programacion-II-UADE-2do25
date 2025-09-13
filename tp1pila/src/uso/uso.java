@@ -135,6 +135,52 @@ public class uso {
 		
 	}
 	
+	public static boolean capicua(PilaTDA Pila) {
+		
+		PilaTDA pilaaux = copiarPila(Pila);
+		PilaTDA pilaaux2 = copiarPila(Pila);
+		PilaTDA pilaaux3 = copiarPila(Pila);
+		pilaaux = invertirPila(pilaaux2);
+		
+		while(!pilaaux3.pilaVacia()) {
+			if(!(pilaaux3.tope() == pilaaux.tope())) {
+				return false;
+			}
+			pilaaux3.desapilar();
+			pilaaux.desapilar();
+		}
+		return true;
+	}
+	
+	public static void eliminarRepetidos(PilaTDA Pila) {
+		
+		 PilaTDA pilaoriginal = copiarPila(Pila);
+		 PilaTDA pilacomprobacion = copiarPila(Pila);
+		 PilaTDA pilaavaciar = copiarPila(Pila);
+		 PilaTDA pilaaux = new Pila();
+		 pilaaux.inicializarPila();
+		 
+		 vaciarPila(Pila);
+		 boolean esta = false;
+		 while(!pilaavaciar.pilaVacia()) {
+			 while(!pilacomprobacion.pilaVacia()) {
+				 if( pilacomprobacion.tope() == pilaavaciar.tope() ) {
+					 esta = true;
+				 }
+				 pilacomprobacion.desapilar();
+			 }
+			 
+			 if(!esta) {
+				 pilaaux.apilar(pilaavaciar.tope());
+			 }
+			 pilaavaciar.desapilar();
+			 pilacomprobacion = copiarPila(pilaoriginal);
+		 }
+		 
+		 Pila = copiarPila(pilaaux);
+		 
+	}
+	
 	public static void main(String[] args) {
 		
 		PilaTDA pilaoriginal = new Pila();
@@ -171,5 +217,39 @@ public class uso {
 		//punto f
 		
 		System.out.println("\nPromedio de elementos en Pila original:\n" + promedio(pilaoriginal));
+	
+		//TP3 punto a
+		vaciarPila(pilaoriginal);
+		apilarNumeros(pilaoriginal);
+		System.out.println("Mostrando Pila Capicua Negativo\n");
+		mostrarPila(pilaoriginal);
+		
+		if(capicua(pilaoriginal)) {
+			System.out.println("La pila es capicua");
+		} else {
+			System.out.println("La pila no es capicua");
+		}
+
+		vaciarPila(pilaoriginal);
+		pilaoriginal.apilar(1);
+		pilaoriginal.apilar(2);
+		pilaoriginal.apilar(3);
+		pilaoriginal.apilar(3);
+		pilaoriginal.apilar(2);
+		pilaoriginal.apilar(1);
+		System.out.println("Mostrando Pila Capicua Positivo\n");
+		mostrarPila(pilaoriginal);
+		
+		if(capicua(pilaoriginal)) {
+			System.out.println("La pila es capicua");
+		} else {
+			System.out.println("La pila no es capicua");
+		};
+		
+		//TP3 punto b
+			
+		eliminarRepetidos(pilaoriginal);
+		mostrarPila(pilaoriginal);
+			
 	}
 }
