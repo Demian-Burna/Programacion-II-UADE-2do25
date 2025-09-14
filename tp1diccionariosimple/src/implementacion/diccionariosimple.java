@@ -1,6 +1,7 @@
 package implementacion;
 
 import imple.Conjunto;
+import tda.ConjuntoTDA;
 import interfaz.diccionariosimpleTDA;
 
 public class diccionariosimple implements diccionariosimpleTDA {
@@ -57,8 +58,8 @@ public class diccionariosimple implements diccionariosimpleTDA {
 	}
 	
 	@Override
-	public Conjunto claves() {
-		Conjunto c = new Conjunto();
+	public ConjuntoTDA claves() {
+		ConjuntoTDA c = new Conjunto();
 		c.inicializarConjunto();
 		for (int i=0; i < cant; i++) {
 			c.agregar(elementos[i].clave);
