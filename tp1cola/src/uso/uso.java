@@ -80,7 +80,7 @@ public class uso{
 	
 	public static void invertirCola1 (Cola cola) {		
 		
-		Pila pilaux = new Pila();
+		tda.PilaTDA pilaux = new Pila();
 		pilaux.inicializarPila();
 		
 		while(!cola.colaVacia()) {

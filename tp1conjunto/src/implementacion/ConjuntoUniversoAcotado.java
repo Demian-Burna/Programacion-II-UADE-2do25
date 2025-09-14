@@ -2,34 +2,26 @@ package implementacion;
 
 import interfaz.ConjuntoTDA;
 
-public class Conjunto implements ConjuntoTDA {
-	private int[] a;
-	private int cant;
+public class ConjuntoUniversoAcotado implements ConjuntoTDA {
+	int[] a;
+	int cant;
 	
-	@Override
 	public void inicializarConjunto() {
 		a = new int[100];
 		cant = 0;
 	}
 	
-	@Override
 	public void agregar(int x) {
 		if (!this.pertenece(x)){ //Verification de no pertenece
-			if(cant < 10) {
-				a[cant] = x;
-				cant++; //nuevo elemento
-			} else {
-				System.out.print("Elementos maximo alcanzado");
-			}
+			a[cant] = x;
+			cant++; //nuevo elemento
 		}
 	}
 	
-	@Override
 	public boolean conjuntoVacio() {
 		return (cant == 0);
 	}
 	
-	@Override
 	public int elegir() { //arbitrario
 		int max = cant-1;
 		int min = 0;
@@ -37,7 +29,6 @@ public class Conjunto implements ConjuntoTDA {
 		return a[pos]; 
 	}
 	
-	@Override
 	public boolean pertenece(int x) {
 		int i = 0;
 		while (i < cant && a[i] != x)
@@ -45,7 +36,6 @@ public class Conjunto implements ConjuntoTDA {
 		return (i < cant);
 	}
 	
-	@Override
 	public void sacar(int x) {
 		int i = 0;
 		while (i < cant && a[i] != x)
