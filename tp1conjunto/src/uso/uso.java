@@ -6,10 +6,12 @@ import interfaz.ConjuntoTDA;
 import tda.PilaTDA;
 import imple.Cola;
 import tda.ColaTDA;
+import implementacion.ConjuntoExtendido;
+import interfaz.ConjuntoExtendidoTDA;
 
 public class uso {
 	
-public static void apilarNumeros (PilaTDA Pila) {
+	public static void apilarNumeros (PilaTDA Pila) {
 		
 		for(int i = 0; i < 5; i++) {
 			Pila.apilar(i);
@@ -76,7 +78,9 @@ public static void apilarNumeros (PilaTDA Pila) {
 	}
 
 	public static void vaciarCola(ColaTDA cola) {	
+		
 		while(!cola.colaVacia()) {cola.desacolar();}	
+		
 	}
 	
 	public static void mostrarCola(ColaTDA cola) {
@@ -146,6 +150,27 @@ public static void apilarNumeros (PilaTDA Pila) {
 		
 	};
 	
+	public static void llenarConjunto (ConjuntoExtendidoTDA C) {
+		
+		int elemento = 0;
+		
+		for(int i = 0; i < 3; i++) {
+			
+			elemento = (int)(Math.random()*11);
+			if(!(C.pertenece(elemento))) {
+				
+				C.agregar(elemento);
+				
+			} else {
+				
+				i--;
+				
+			};
+			
+		};
+		
+	};
+	
 	public static void vaciarConjunto (ConjuntoTDA C) {
 		
 		int elemento = 0;
@@ -158,6 +183,32 @@ public static void apilarNumeros (PilaTDA Pila) {
 	};
 	
 	public static void mostrarConjunto (ConjuntoTDA C) {
+		
+		ConjuntoTDA CAux = new Conjunto();
+		CAux.inicializarConjunto();
+		int elemento = 0;
+		
+		if(!C.conjuntoVacio()) {
+			while(!C.conjuntoVacio()) {
+				elemento = C.elegir();
+				System.out.println("\t" + elemento);
+				
+				CAux.agregar(elemento);
+				C.sacar(elemento);
+			};
+			
+			while(!CAux.conjuntoVacio()) {
+				elemento = CAux.elegir();
+				C.agregar(elemento);
+				CAux.sacar(elemento);
+			};
+		} else {
+			System.out.println("\n\tConjunto vacio\n");
+		}
+		
+	};
+	
+	public static void mostrarConjunto (ConjuntoExtendidoTDA C) {
 		
 		ConjuntoTDA CAux = new Conjunto();
 		CAux.inicializarConjunto();
@@ -501,6 +552,43 @@ public static void apilarNumeros (PilaTDA Pila) {
 		} else {
 			System.out.println("\nLos conjuntos NO son iguales\n");
 		}
+		
+		
+		System.out.println("\nMostrando funcionalidades de conjunto extendido");
+		
+		
+		ConjuntoExtendidoTDA CE1 = new ConjuntoExtendido();
+		ConjuntoExtendidoTDA CE2 = new ConjuntoExtendido();
+		CE1.inicializarConjunto();
+		CE2.inicializarConjunto();
+		
+		llenarConjunto(CE2);
+		llenarConjunto(CE1);
+		
+		System.out.println("\nMostrando Conjunto E 1 :\n");
+		mostrarConjunto(CE1);
+		
+		System.out.println("\nMostrando Conjunto E 2 :\n");
+		mostrarConjunto(CE2);
+		
+		System.out.println("\nMostrando Diferencia CE1 - CE2 :\n");
+		ConjuntoExtendidoTDA CDiferencia = CE1.diferencia(CE2);
+		mostrarConjunto(CDiferencia);
+		
+		System.out.println("\nMostrando Suma CE1:" + CE1.suma() + "\n");
+		System.out.println("\nMostrando Suma CE2:" + CE2.suma() + "\n");
+		
+		CE1.vaciar();
+		CE2.vaciar();
+		
+		System.out.println("\nVerificando Vaciado de Conjuntos:\n");
+		
+		System.out.println("\nMostrando Conjunto E 1 :\n");
+		mostrarConjunto(CE1);
+		
+		System.out.println("\nMostrando Conjunto E 2 :\n");
+		mostrarConjunto(CE2);
+		
 		
 	};
 	

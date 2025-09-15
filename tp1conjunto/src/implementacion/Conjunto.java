@@ -3,8 +3,8 @@ package implementacion;
 import interfaz.ConjuntoTDA;
 
 public class Conjunto implements ConjuntoTDA {
-	private int[] a;
-	private int cant;
+	protected int[] a;
+	protected int cant;
 	
 	@Override
 	public void inicializarConjunto() {
@@ -15,12 +15,8 @@ public class Conjunto implements ConjuntoTDA {
 	@Override
 	public void agregar(int x) {
 		if (!this.pertenece(x)){ //Verification de no pertenece
-			if(cant < 10) {
-				a[cant] = x;
-				cant++; //nuevo elemento
-			} else {
-				System.out.print("Elementos maximo alcanzado");
-			}
+			a[cant] = x;
+			cant++; //nuevo elemento
 		}
 	}
 	
